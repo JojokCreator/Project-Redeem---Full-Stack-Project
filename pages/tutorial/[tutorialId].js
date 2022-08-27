@@ -16,7 +16,7 @@ function SpecificTutorial({ data }) {
 export const getServerSideProps = async ({ params }) => {
   const tutorialId = params.tutorialId.replace(/\-/g, "+");
   const data = await fetch(
-    `https://backend-soc.herokuapp.com/tutorials/${tutorialId}`
+    `${process.env.URL}/${tutorialId}`
   ).then((r) => r.json());
 
   return {

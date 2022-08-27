@@ -30,7 +30,7 @@ export default function SpecificTutorial({ data, cardId }) {
 
 export const getServerSideProps = async (context) => {
   const data = await fetch(
-    `https://backend-soc.herokuapp.com/tutorials`,
+    `${process.env.URL}/tutorials`,
   ).then((r) => r.json())
   const { cardId } = context.query
 

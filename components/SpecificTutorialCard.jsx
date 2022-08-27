@@ -27,7 +27,7 @@ export default function SpecificTutorialCard({
 
   async function handleClick() {
     const data = await fetch(
-      `https://backend-soc.herokuapp.com/tutorials/${cardId}/likeTutorial`,
+      `${process.env.URL}/like/${cardId}/`,
       {
         method: "PATCH",
         body: JSON.stringify({ userId: user.sub }),
@@ -54,7 +54,7 @@ export default function SpecificTutorialCard({
     e.preventDefault();
     const date = new Date();
     const data = await fetch(
-      `https://backend-soc.herokuapp.com/tutorials/${cardId}/commentPost`,
+      `${process.env.URL}/comments/${cardId}`,
       {
         method: "PATCH",
         body: JSON.stringify({

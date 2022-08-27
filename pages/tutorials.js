@@ -48,7 +48,7 @@ export default function Tutorials({ data, user }) {
 }
 
 export const getServerSideProps = async () => {
-  const data = await fetch(`https://backend-soc.herokuapp.com/tutorials`).then(
+  const data = await fetch(`${process.env.URL}/tutorials`).then(
     (r) => r.json()
   );
 

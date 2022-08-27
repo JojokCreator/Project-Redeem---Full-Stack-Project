@@ -13,7 +13,7 @@ const Profile = ({ firstData }) => {
     //post to backend to delete that post that a user was created
 
     const data = await fetch(
-      `https://backend-soc.herokuapp.com/tutorials/${myCardId}`,
+      `${process.env.URL}/${myCardId}`,
       {
         method: "DELETE",
 
@@ -24,7 +24,7 @@ const Profile = ({ firstData }) => {
     );
     const response = await data.json();
     setData(
-      await fetch(`https://backend-soc.herokuapp.com/tutorials`).then((r) =>
+      await fetch(`${process.env.URL}/tutorials`).then((r) =>
         r.json()
       )
     );
@@ -100,7 +100,7 @@ const Profile = ({ firstData }) => {
 export const getServerSideProps = withPageAuthRequired({
   getServerSideProps: async () => {
     const firstData = await fetch(
-      `https://backend-soc.herokuapp.com/tutorials`
+      `${process.env.URL}/tutorials`
     ).then((r) => r.json());
 
     return {

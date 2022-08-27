@@ -3,7 +3,6 @@ import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import moment from 'moment'
 import Link from 'next/link'
-import { useUser } from '@auth0/nextjs-auth0';
 
 const Card = ({
   imageUrl,
@@ -26,6 +25,7 @@ const Card = ({
 
   async function handleClick() {
     const data = await fetch(
+      
       `${process.env.NEXT_PUBLIC_URL}/like/${id}`,
       {
         method: "PATCH",
@@ -42,9 +42,9 @@ const Card = ({
 
   return (
     <div>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-gray-400 hover:cursor-pointer">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-gray-400">
         <Link href={{ pathname: "/specifictutorial", query: { cardId: id } }}>
-          <div>
+          <div className="hover:cursor-pointer">
             <Image
               className="w-full"
               src={imageUrl}
@@ -91,7 +91,7 @@ const Card = ({
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             ) : (
-              <p onClick={handleClick} className="pt-1 pr-1 text-2xl">
+              <p onClick={handleClick} className="pt-1 pr-1 text-2xl hover:cursor-pointer">
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             )}

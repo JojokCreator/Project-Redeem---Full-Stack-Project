@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="flex justify-between text-white ">
         <div className="flex justify-content ml-6 pt-1">
         <AiOutlineCopyrightCircle className="pt-1"/>
-        <p> 2022 Boolean Pirates</p>
+        <p> 2022 Project Redeem</p>
         </div>
         <Link href='/contact'>
         <div className="flex float-right hover:bg-green-700  text-3xl mr-6 pl-1 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-500 focus:ring-white hover:cursor-pointer">

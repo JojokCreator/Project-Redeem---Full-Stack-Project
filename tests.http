@@ -7,7 +7,7 @@ GET http://localhost:3000/api/tutorials/62f29f178da7b5756859e957
 
 
 ###
-DELETE https://backend-soc.herokuapp.com/tutorials/630923dfa70e7a6f8256f6fa
+DELETE http://localhost:3000/api/tutorials/6309d8a7417c36703ec888ee 
 
 
 ###

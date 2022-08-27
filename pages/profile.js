@@ -37,7 +37,7 @@ const Profile = ({ firstData }) => {
           <div className="flex justify-center py-10 bg-gradient-to-r from-sky-200 via-teal-200 to-sky-200">
             <div>
               <Image
-                className="inline object-cover w-8 h-8 rounded-full"
+                className="inline object-cover w-8 h-8 rounded-full border-stone-900"
                 src={user?.picture}
                 alt={user?.sub}
                 height="100%"
@@ -78,9 +78,9 @@ const Profile = ({ firstData }) => {
                   date={data.createdAt}
                   id={data._id}
                   creator={data.creator}
-                  creatorImageUrl={data.favourites[0]}
+                  creatorImageUrl={data.creator_image_url[0]}
                 />
-                <div className="bg-red-500 hover:bg-red-700 text-white text-center px-4 mt-2 rounded">
+                <div className="bg-red-500 hover:bg-red-700 text-white text-center px-4 mt-2 rounded hover:cursor-pointer">
                   <button
                     onClick={() => {
                       handleDelete(data._id);

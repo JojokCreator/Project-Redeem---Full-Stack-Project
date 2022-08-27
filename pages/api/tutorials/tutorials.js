@@ -30,18 +30,6 @@ export default async function handler(req, res) {
         res.status(500).json({ message: error.message })
       }
       break
-    case 'DELETE':
-      try {
-        const { id } = req.params
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-          return res.status(404).send(`No tutorial with id ${id} found`)
-        }
-        await tutorialsSchema.findByIdAndRemove(id)
-        res.status(200).json({ message: `Post with ${id} deleted` })
-      } catch (error) {
-        res.status(404).json({ message: error.message })
-      }
-      break
     default:
       res.status(400).json({ success: false })
       break

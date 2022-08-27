@@ -121,7 +121,7 @@ export default function Tutorials({ data }) {
                     likes={data.likes}
                     date={data.createdAt}
                     id={data._id}
-                    creatorImageUrl={data.favourites[0]}
+                    creatorImageUrl={data.creator_image_url[0]}
                   />
                 </div>
               ))}
@@ -135,7 +135,7 @@ export default function Tutorials({ data }) {
 
 export const getServerSideProps = async () => {
 
-  const data = await fetch(`https://redeem-soc.herokuapp.com/tutorials`).then(
+  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/tutorials`).then(
     (r) => r.json()
   );
 

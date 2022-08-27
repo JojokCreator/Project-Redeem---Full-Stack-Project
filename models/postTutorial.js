@@ -19,7 +19,7 @@ const tutorialSchema = new mongoose.Schema({
         type: [String],
         default: [],
     },
-    favourites: {
+    creator_image_url: {
         type: [String],
         default: [],
     },

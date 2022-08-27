@@ -51,7 +51,7 @@ export default function Home({ data }) {
                   date={data.createdAt}
                   id={data._id}
                   creator={data.creator}
-                  creatorImageUrl={data.favourites[0]}
+                  creatorImageUrl={data.creator_image_url[0]}
                 />
               </div>
             ))}

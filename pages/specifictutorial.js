@@ -20,7 +20,7 @@ export default function SpecificTutorial({ data, cardId }) {
               instructions={card.instructions}
               comments={card.comments}
               creator={card.creator}
-              creatorImageUrl={card.favourites[0]}
+              creatorImageUrl={card.creator_image_url[0]}
             />
           </div>
         ))}

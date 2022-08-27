@@ -5,7 +5,7 @@ export default function Form({ user }) {
   const router = useRouter()
   const [error, setError] = useState("")
   const [imageSelected, setImageSelected] = useState("");
-  const [formData, setFormData] = useState({creator: "Anon", favourites:['/images/avatar.jpg'], ability: "Beginner"});
+  const [formData, setFormData] = useState({creator: "Anon", creator_image_url:['/images/avatar.jpg'], ability: "Beginner"});
   const handleInput = (e) => {
     setFormData({
       ...formData,
@@ -47,7 +47,7 @@ export default function Form({ user }) {
           ...formData, 
           "imageUrl" : response.url,
           "creator": user?.name, 
-          "favourites":[user?.picture]
+          "creator_image_url":[user?.picture]
       }
     );
   };

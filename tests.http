@@ -14,18 +14,24 @@ DELETE http://localhost:3000/api/tutorials/6309d8a7417c36703ec888ee
 POST http://localhost:3000/api/tutorials/tutorials
 content-type: application/json
 
-    {
-    "title": "Homemade Water Fish",
-    "instructions": "make it make it make it.",
-    "ability": "Intermediate",
-    "creator": "Joe",
-    "materials": "plastic, wire, string",
-    "videoUrl": "https://res.cloudinary.com/dcyovjaom/image/upload/v1659515150/sample.jpg",
-    "imageUrl": "https://res.cloudinary.com/dcyovjaom/image/upload/v1659515179/cld-sample-5.jpg",
-    "likes": ["user2", "user3", "user4", "user5", "user6", "user7", "user8"],
-    "comments": ["comment2", "comment3", "comment4", "comment5", "comment6", "comment7"],
-    "favourites": ["like2", "like3", "like4", "like5", "like6", "like7", "like8"]
-    }
+{
+"title": "DIY Water Filter",
+"instructions": "You can easily make a water filter with children using recycled materials found at home. This project is best for children in grades three through six, but it will work for all ages. Construction of the homemade water filter will take about an hour to build. Testing of the water filter can take anywhere from an hour to several hours depending on how fast the water drips. By using natural materials that mimic the water cycle of the Earth, children can learn how the process of infiltration works and create a water filter that works.",
+"ability": "Intermediate",
+"creator": "Boolean Pirates",
+"materials":"Plastic Bottle, Charcoal",
+"videoUrl": "https://www.youtube.com/watch?v=-7iTVmcR58A",
+"imageUrl": "http://res.cloudinary.com/dcyovjaom/image/upload/v1660649635/th_xdlppl.webp",
+"likes": [
+"google-oauth2|115738172154344632327"
+],
+"comments": [
+"This is great! - posted by BobbyD at 16/08/2022, 12:34:16#£)*$%^!!%https://lh3.googleusercontent.com/a/AItbvmngyq4ELaljjnc4UxQJpIT7wzXgUXDx06STjotX=s96-c"
+],
+"creator_image_url": [
+"https://lh3.googleusercontent.com/a/AItbvmngyq4ELaljjnc4UxQJpIT7wzXgUXDx06STjotX=s96-c"
+]
+}
 
 ###
 PATCH http://localhost:3000/api/tutorials/like/62f29f178da7b5756859e957

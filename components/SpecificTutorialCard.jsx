@@ -40,7 +40,7 @@ export default function SpecificTutorialCard({
     setLiked(response.likes.includes(user.sub));
     setLikeCount(response.likes.length);
   }
-
+  
   //Functions for comment section on specifictutorial.
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [commentInput, setCommentInput] = useState("");
@@ -52,6 +52,10 @@ export default function SpecificTutorialCard({
 
   async function handleSubmitComment(e) {
     e.preventDefault();
+    let username = null
+    if (user.given_name === undefined) {username = user.nickname
+    } else
+    { username = user.given_name}
     const date = new Date();
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/comments/${cardId}`,
@@ -62,11 +66,11 @@ export default function SpecificTutorialCard({
             commentInput +
             " - " +
             "posted by " +
-            user.given_name +
+            username +
             " at " +
             date.toLocaleString() +
             // delimiter
-            "#£)*$%^!!%" +
+            "commentor_image_url:" +
             user.picture,
         }),
         headers: {
@@ -80,7 +84,7 @@ export default function SpecificTutorialCard({
       commentInput +
         " - " +
         "posted by " +
-        user.given_name +
+        username +
         " at " +
         date.toLocaleString()]
     );
@@ -143,7 +147,7 @@ export default function SpecificTutorialCard({
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             ) : (
-              <p onClick={handleClick} className="pt-1 pr-1 text-2xl hover:cursor-pointer">
+              <p onClick={handleClick} className="pt-1 pr-1 text-2xl hover:cursor-pointer hover:shadow-inner">
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             )}
@@ -226,7 +230,7 @@ export default function SpecificTutorialCard({
                   height="35%"
                   width="35%"
                 />{" "}
-                {singleComment.split("#£)*$%^!!%")[0]}
+                {singleComment.split("commentor_image_url:")[0]}
               </div>
             ))
           ) : (
@@ -242,12 +246,12 @@ export default function SpecificTutorialCard({
               >
                 <Image
                   className="inline object-cover w-3 h-3 rounded-full"
-                  src={singleComment.split("#£)*$%^!!%")[1]}
+                  src={singleComment.split("commentor_image_url:")[1]}
                   alt={creatorImageUrl}
                   height="35%"
                   width="35%"
                 />{" "}
-                {singleComment.split("#£)*$%^!!%")[0]}
+                {singleComment.split("commentor_image_url:")[0]}
               </div>
             ))}
         </div>

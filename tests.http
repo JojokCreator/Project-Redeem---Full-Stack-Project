@@ -1,0 +1,46 @@
+GET http://localhost:3000/api/tutorials/tutorials
+
+
+###
+
+GET http://localhost:3000/api/tutorials/62f29f178da7b5756859e957
+
+
+###
+DELETE https://backend-soc.herokuapp.com/tutorials/630923dfa70e7a6f8256f6fa
+
+
+###
+POST http://localhost:3000/api/tutorials/tutorials
+content-type: application/json
+
+    {
+    "title": "Homemade Water Fish",
+    "instructions": "make it make it make it.",
+    "ability": "Intermediate",
+    "creator": "Joe",
+    "materials": "plastic, wire, string",
+    "videoUrl": "https://res.cloudinary.com/dcyovjaom/image/upload/v1659515150/sample.jpg",
+    "imageUrl": "https://res.cloudinary.com/dcyovjaom/image/upload/v1659515179/cld-sample-5.jpg",
+    "likes": ["user2", "user3", "user4", "user5", "user6", "user7", "user8"],
+    "comments": ["comment2", "comment3", "comment4", "comment5", "comment6", "comment7"],
+    "favourites": ["like2", "like3", "like4", "like5", "like6", "like7", "like8"]
+    }
+
+###
+PATCH http://localhost:3000/api/tutorials/like/62f29f178da7b5756859e957
+content-type: application/json
+
+{
+    "userId" : "Tass2"
+}
+
+
+###
+PATCH  http://localhost:3000/api/tutorials/comments/62f29f178da7b5756859e957
+content-type: application/json
+
+{
+ "addComments" : "Test adding comments"
+
+}

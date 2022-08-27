@@ -25,8 +25,9 @@ export default function Form({ user }) {
       });
       const response = await data.json()
       const id = response._id
-      router.push(`/specifictutorial?cardId=${id}`)}
-      setError('Please click here')
+      router.push(`/specifictutorial?cardId=${id}`)
+    } else
+      setError('Please click above')
   };
 
   //post request which uploads image to cloudinary 
@@ -235,7 +236,7 @@ export default function Form({ user }) {
                           </div>
 
                           :
-                          <div className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-backgroundtext hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 font-sans p-2">
+                          <div className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-backgroundtext hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 font-sans p-2 hover:cursor-pointer">
                             {(!formData.imageUrl) ?
                             <button onClick={uploadImage}>
                               Click to Upload Image
@@ -243,8 +244,8 @@ export default function Form({ user }) {
                             : 
                             <p className="hover:none">Image Uploaded Successfully</p>
                             }
-                            <p>{error}</p>
                           </div>}
+                          <p>{error}</p>
                         </div>
                       </div>
                     </div>

@@ -19,7 +19,7 @@ export default function SpecificTutorialCard({
   const initialLikeState = user && likes.includes(user.sub);
   const [liked, setLiked] = useState(initialLikeState);
   const [likeCount, setLikeCount] = useState(likes.length);
-  const [comment, setComment] = useState(false);
+  const [comment, setComment] = useState([]);
 
   useEffect(() => {
     setLiked(user && likes.includes(user.sub));
@@ -76,13 +76,13 @@ export default function SpecificTutorialCard({
     );
     const response = await data.json();
     setCommentInput("");
-    setComment(
+    setComment([...comment,
       commentInput +
         " - " +
         "posted by " +
         user.given_name +
         " at " +
-        date.toLocaleString()
+        date.toLocaleString()]
     );
   }
 
@@ -137,13 +137,13 @@ export default function SpecificTutorialCard({
             Materials:
           </h1>
 
-          <div className="flex display pt-1 pr-3 text-2xl">
+          <div className="flex display pt-1 pr-3 text-2xl hover:cursor-pointer">
             {user === undefined ? (
               <p className="pt-1 pr-1 text-2xl">
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             ) : (
-              <p onClick={handleClick} className="pt-1 pr-1 text-2xl">
+              <p onClick={handleClick} className="pt-1 pr-1 text-2xl hover:cursor-pointer">
                 {liked ? <FaThumbsUp /> : <FaRegThumbsUp />}
               </p>
             )}
@@ -170,7 +170,7 @@ export default function SpecificTutorialCard({
       </div>
       {user && (
         <div className=" p-2 mt-2 max-w-2xl  bg-white rounded-lg border border-gray-200 shadow-md md:w-144">
-          <form className="w-full max-w-xl">
+          <form onSubmit={handleSubmitComment} className="w-full max-w-xl">
             <div className="flex flex-wrap -mx-3 mb-6">
               <h2 className="px-4 pt-3 pb-2 text-green-backgroundtext">
                 Add a new comment
@@ -195,12 +195,9 @@ export default function SpecificTutorialCard({
                   ></svg>
                 </div>
                 <div className="-mr-1">
-                  <input
+                  <button
                     type="submit"
-                    className="bg-green-backgroundtext text-white-text font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1  hover:bg-green-700"
-                    value="Post Comment"
-                    onClick={handleSubmitComment}
-                  />
+                    className="bg-green-backgroundtext text-white-text font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1  hover:bg-green-700 hover:cursor-pointer">Post Comment</button>
                 </div>
               </div>
             </div>
@@ -214,16 +211,24 @@ export default function SpecificTutorialCard({
         </h2>
         <div className="px-4 pt-4 pb-2">
           {comment ? (
-            <div className="  p-2 mt-2 max-w-2xl  bg-white rounded-lg border border-gray-200 shadow-md">
-              <Image
-                className="inline object-cover w-3 h-3 rounded-full"
-                src={user.picture}
-                alt={creatorImageUrl}
-                height="35%"
-                width="35%"
-              />{" "}
-              {comment}
-            </div>
+            comment
+            .slice(0)
+            .reverse()
+            .map((singleComment, index) => (
+              <div
+                className="p-2 mt-2 max-w-2xl  bg-white rounded-lg border border-gray-200 shadow-md"
+                key={index}
+              >
+                <Image
+                  className="inline object-cover w-3 h-3 rounded-full"
+                  src={user.picture}
+                  alt={creatorImageUrl}
+                  height="35%"
+                  width="35%"
+                />{" "}
+                {singleComment.split("#£)*$%^!!%")[0]}
+              </div>
+            ))
           ) : (
             ""
           )}

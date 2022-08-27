@@ -16,7 +16,7 @@ export default function Form({ user }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(formData.imageUrl) {
-    const data = await fetch(`${process.env.URL}/tutorials`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/tutorials`, {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {

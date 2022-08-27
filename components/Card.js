@@ -26,7 +26,7 @@ const Card = ({
 
   async function handleClick() {
     const data = await fetch(
-      `${process.env.URL}/like/${id}`,
+      `${process.env.NEXT_PUBLIC_URL}/like/${id}`,
       {
         method: "PATCH",
         body: JSON.stringify({ userId: user.sub }),

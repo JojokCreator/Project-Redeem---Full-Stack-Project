@@ -27,7 +27,7 @@ export default function SpecificTutorialCard({
 
   async function handleClick() {
     const data = await fetch(
-      `${process.env.URL}/like/${cardId}/`,
+      `${process.env.NEXT_PUBLIC_URL}/like/${cardId}/`,
       {
         method: "PATCH",
         body: JSON.stringify({ userId: user.sub }),
@@ -54,7 +54,7 @@ export default function SpecificTutorialCard({
     e.preventDefault();
     const date = new Date();
     const data = await fetch(
-      `${process.env.URL}/comments/${cardId}`,
+      `${process.env.NEXT_PUBLIC_URL}/comments/${cardId}`,
       {
         method: "PATCH",
         body: JSON.stringify({

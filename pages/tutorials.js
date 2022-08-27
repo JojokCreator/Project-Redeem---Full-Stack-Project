@@ -48,7 +48,7 @@ export default function Tutorials({ data, user }) {
 }
 
 export const getServerSideProps = async () => {
-  const data = await fetch(`${process.env.URL}/tutorials`).then(
+  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/tutorials`).then(
     (r) => r.json()
   );
 

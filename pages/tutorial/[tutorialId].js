@@ -16,7 +16,7 @@ function SpecificTutorial({ data }) {
 export const getServerSideProps = async ({ params }) => {
   const tutorialId = params.tutorialId.replace(/\-/g, "+");
   const data = await fetch(
-    `${process.env.URL}/${tutorialId}`
+    `${process.env.NEXT_PUBLIC_URL}/${tutorialId}`
   ).then((r) => r.json());
 
   return {

@@ -13,7 +13,7 @@ const Profile = ({ firstData }) => {
     //post to backend to delete that post that a user was created
 
     const data = await fetch(
-      `${process.env.URL}/${myCardId}`,
+      `${process.env.NEXT_PUBLIC_URL}/${myCardId}`,
       {
         method: "DELETE",
 
@@ -24,7 +24,7 @@ const Profile = ({ firstData }) => {
     );
     const response = await data.json();
     setData(
-      await fetch(`${process.env.URL}/tutorials`).then((r) =>
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/tutorials`).then((r) =>
         r.json()
       )
     );
@@ -100,7 +100,7 @@ const Profile = ({ firstData }) => {
 export const getServerSideProps = withPageAuthRequired({
   getServerSideProps: async () => {
     const firstData = await fetch(
-      `${process.env.URL}/tutorials`
+      `${process.env.NEXT_PUBLIC_URL}/tutorials`
     ).then((r) => r.json());
 
     return {

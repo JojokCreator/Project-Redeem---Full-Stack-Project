@@ -30,7 +30,7 @@ export default function SpecificTutorial({ data, cardId }) {
 
 export const getServerSideProps = async (context) => {
   const data = await fetch(
-    `${process.env.URL}/tutorials`,
+    `${process.env.NEXT_PUBLIC_URL}/tutorials`,
   ).then((r) => r.json())
   const { cardId } = context.query
 

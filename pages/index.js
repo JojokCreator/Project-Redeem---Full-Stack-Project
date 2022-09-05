@@ -2,17 +2,22 @@ import Card from "../components/Card";
 import Image from "next/image";
 import { useUser } from '@auth0/nextjs-auth0';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import postcss from "postcss";
 
 export default function Home({ data }) {
   const { user, error, isLoading } = useUser();
   const [tutorials, setTutorials] = useState(data.slice(0, 4));
-
+  const [hasMore, setHasMore] = useState(true)
   
   const getMorePosts = () => {
     console.log(tutorials.length)
   setTutorials(tutorials => [...tutorials, ...data.slice(tutorials.length,tutorials.length+3)])
   }
+
+  useEffect(() => {
+    setHasMore(data.length > tutorials.length ? true : false)
+  }, [tutorials, data.length])
 
   return (
     //whole layout
@@ -46,11 +51,13 @@ export default function Home({ data }) {
           <InfiniteScroll
             dataLength={tutorials.length} //This is important field to render the next data
             next={getMorePosts}
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
+            hasMore={hasMore}
+            loader={ <p style={{ textAlign: 'center' }}>
+            <b>Scroll down for more</b>
+          </p>}
             endMessage={
               <p style={{ textAlign: 'center' }}>
-                <b>You have seen it all</b>
+                <b>This is all the tutorials!</b>
               </p>
             }
           >

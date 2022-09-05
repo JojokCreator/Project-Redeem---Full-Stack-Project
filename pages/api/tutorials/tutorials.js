@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const tutorials = await tutorialsSchema.find()
+        const tutorials = await tutorialsSchema.find().sort({"createdAt" :-1})
         res.status(200).json(tutorials)
       } catch (error) {
         res.status(400).json({ message: error.message })

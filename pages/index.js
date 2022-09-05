@@ -1,9 +1,18 @@
 import Card from "../components/Card";
 import Image from "next/image";
 import { useUser } from '@auth0/nextjs-auth0';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useState } from "react";
 
 export default function Home({ data }) {
   const { user, error, isLoading } = useUser();
+  const [tutorials, setTutorials] = useState(data.slice(0, 4));
+
+  
+  const getMorePosts = () => {
+    console.log(tutorials.length)
+  setTutorials(tutorials => [...tutorials, ...data.slice(tutorials.length,tutorials.length+3)])
+  }
 
   return (
     //whole layout
@@ -34,13 +43,22 @@ export default function Home({ data }) {
         </h1>
       </div>
       {/* card holder that aligns the cards to center */}
+          <InfiniteScroll
+            dataLength={tutorials.length} //This is important field to render the next data
+            next={getMorePosts}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>You have seen it all</b>
+              </p>
+            }
+          >
       <div className="flex items-center justify-center mt-2">
         {/* media query which shows different amount of cards on different screen sizes */}
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-2 p-1 py-2">
           {/* Filters the first 6 results before mapping */}
-          {data
-            .filter((item, index) => index < 8)
-            .map((data, index) => (
+            {tutorials.map((data, index) => (
               <div key={index} className="m-2">
                 <Card
                   user={user}
@@ -54,10 +72,12 @@ export default function Home({ data }) {
                   creatorImageUrl={data.creator_image_url[0]}
                 />
               </div>
-            ))}
+            ))
+            }
         </div>
       </div>
-    </div>
+          </InfiniteScroll>
+    </div >
   );
 }
 
